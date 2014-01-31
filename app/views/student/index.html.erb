@@ -1,0 +1,23 @@
+<h1>Students</h1>
+
+<%= link_to 'Create a new student', new_student_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Nickname</th>
+    <th>Email</th>
+    <th>Picture</th>
+  </tr>
+ 
+  <% @students.each do |student| %>
+    <tr>
+      <tr>
+      <td><%= student.name %></td>
+      <td><%= student.nickname %></td>
+      <td><%= student.email %></td>
+      <td><%= image_tag image_url(student) %></td>
+      <td><%= link_to 'Edit Student Profile', edit_post_path(student) %></td>
+    </tr>
+  <% end %>
+</table>
