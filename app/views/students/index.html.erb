@@ -1,8 +1,12 @@
 <h1>Students</h1>
 
 <%= link_to 'Create a new student', new_student_path %>
-
-
+<% if sessions[:id] %>
+Hello <%= link_to Student.find_by_email(params[:email]).name, edit_student_path(student) %>
+<% else %>
+<%= link_to 'Login', signin_session_path %>
+<%= link_to 'Sign up', new_student_path %>
+<% end %>
 <table>
   <tr>
     <th>Name</th>

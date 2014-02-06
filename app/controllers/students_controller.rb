@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
         
     if @student.save
       redirect_to students_path
+      flash.now[:saved] = 'Student created'
     else
       render 'new'
     end
@@ -30,6 +31,7 @@ class StudentsController < ApplicationController
  
     if @student.update(params[:student].permit(:name, :nickname, :email, :url, :password_digest))
       redirect_to students_path
+      flash[:update] = 'Student updated'
     else
       render 'edit'
     end
