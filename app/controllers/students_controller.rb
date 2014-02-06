@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   
   def create
     @student = Student.new(params[:student].permit(:name, :nickname, :email, :url, :password_digest))
- 
+        
     if @student.save
       redirect_to students_path
     else
