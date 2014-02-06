@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
   end
   
   def create
-    @student = Student.new(params[:student].permit(:name, :nickname, :email, :url))
+    @student = Student.new(params[:student].permit(:name, :nickname, :email, :url, :password_digest))
  
     if @student.save
       redirect_to students_path
@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
  
-    if @student.update(params[:student].permit(:name, :nickname, :email, :url))
+    if @student.update(params[:student].permit(:name, :nickname, :email, :url, :password_digest))
       redirect_to students_path
     else
       render 'edit'
