@@ -1,6 +1,9 @@
 NkuRails::Application.routes.draw do
 
-    resources :students
+  resources :students do
+  end
+  
+  get 'sessions/new', to: "sessions#create", as: :signin_session
 
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
