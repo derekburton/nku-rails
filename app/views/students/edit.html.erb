@@ -1,7 +1,19 @@
 <h1>Edit Student</h1>
 
+<!-- 
+This shows the information to the user, but only the logged in user can
+post the information to the server. (see students_controller.rb)
+-->
+
 <%= form_for @student do |f| %> 
   
+   <% if @student.errors.any? %>
+    <h2> Form is invalid </h2>
+    <% for message in @student.errors.full_messages %>
+      <h3> <%= message %>  </h3>
+    <% end %>
+  <% end %>
+
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -20,6 +32,16 @@
   <p>
     <%= f.label :url %><br>
     <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
   </p>
 
   <p>
