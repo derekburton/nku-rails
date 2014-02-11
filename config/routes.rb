@@ -4,8 +4,8 @@ NkuRails::Application.routes.draw do
     resources :sessions
   end
   
-  get 'sessions/new', to: "sessions#create", as: :signin_session
-  post 'sessions/new', to: "sessions#new", as: :signin
+  get 'sessions/new', to: "sessions#new", as: :signin_session
+  post 'sessions/new', to: "sessions#create", as: :signin
   get 'sessions/logout', to: "sessions#destroy", as: :logout_session
 
 # The priority is based upon order of creation: first created -> highest priority.

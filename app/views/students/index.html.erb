@@ -1,7 +1,7 @@
 <h1>Students</h1>
 
 <% if session[:user_id] %>
-Hello <%= link_to Student.find(session[:user_id]), edit_student_path(student) %>
+Hello <%= link_to current_student().name, edit_student_path(current_student()) %>
   <%= link_to Logout, logout_session_path %>
 <% else %>
   <%= link_to 'Login', signin_session_path %>
