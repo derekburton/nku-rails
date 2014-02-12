@@ -1,8 +1,12 @@
 NkuRails::Application.routes.draw do
 
-  resources :students do
-    resources :sessions
+  resources :posts do
+    resources :comments
   end
+  
+  resources :students 
+  resources :sessions
+  
   
   get 'sessions/new', to: "sessions#new", as: :signin_session
   post 'sessions/new', to: "sessions#create", as: :signin

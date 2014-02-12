@@ -9,10 +9,10 @@ class StudentsController < ApplicationController
   
   def create
     @student = Student.new(params[:student].permit(:name, :nickname, :email, :url, :password, :password_confirmation))        
-    session[:user_id] = @student.id
     
     if @student.save
       redirect_to students_path
+      session[:student_id] = @student.id
       flash.now[:saved] = 'Student created'
     else
       render 'new'
