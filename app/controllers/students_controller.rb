@@ -34,7 +34,7 @@ When updating, can only update if session's user id is same as the student's id.
   def update
     @student = Student.find(params[:id])
  
-    if session[:user_id] == @student.id
+    if session[:student_id] == @student.id
       if @student.update(params[:student].permit(:name, :nickname, :email, :url, :password_digest))
         redirect_to students_path
         flash[:update] = 'Student updated'
