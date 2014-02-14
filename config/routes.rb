@@ -5,7 +5,7 @@ NkuRails::Application.routes.draw do
   end
   
   resources :students 
-  resources :sessions
+  resources :sessions, except: :show 
   
   
   get 'sessions/new', to: "sessions#new", as: :signin_session
