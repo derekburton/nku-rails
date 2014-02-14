@@ -1,0 +1,18 @@
+<%= form_for @attendance do |f| %>
+
+  <% if @attendance.errors.any? %>
+  <h2>Errors are</h2><br>
+  <% @attendance.errors.full_messages.each do |msg| %>
+  <h3><%= msg %></h3><br>
+  <% end %>
+
+  <p>
+    <%= f.label :seat %><br>
+    <%= f.text_field :seat %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

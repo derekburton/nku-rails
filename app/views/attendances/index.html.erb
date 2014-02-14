@@ -1,0 +1,22 @@
+<h1>Student Attendance</h1>
+
+<%= link_to 'Student Home', students_path %>
+
+<br><br>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Last Attended Date</th>
+    <th>Seat Number</th>
+  </tr>
+ 
+  <% @attendances.each do |attendance| %>
+    <tr>
+      <tr>
+      <td><%= Student.find_by_id(attendance.student_identification).name %></td>
+      <td><%= attendance.attended_on %></td>
+      <td><%= attendance.seat %></td>
+    </tr>
+  <% end %>
+</table>
