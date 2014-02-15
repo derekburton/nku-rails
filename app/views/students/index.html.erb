@@ -4,6 +4,7 @@
   Hello <%= Student.find(session[:student_id]).name %> 
   &nbsp;&nbsp;&nbsp;&nbsp;
   <%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>
+  <%= link_to "I'm here!", create_attendance_path %>
   <%= link_to 'Logout', logout_session_path %>
 <% else %>
   <%= link_to 'Login', signin_session_path %>

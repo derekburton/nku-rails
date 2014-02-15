@@ -5,6 +5,7 @@
   <% @attendance.errors.full_messages.each do |msg| %>
   <h3><%= msg %></h3><br>
   <% end %>
+  <% end %>
 
   <p>
     <%= f.label :seat %><br>
@@ -14,5 +15,4 @@
   <p>
     <%= f.submit %>
   </p>
-
 <% end %>
