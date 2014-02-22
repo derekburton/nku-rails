@@ -12,23 +12,42 @@
 <% end %> 
 
 <br><br>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Nickname</th>
-    <th>Email</th>
-    <th>Picture</th>
-  </tr>
- 
-  <% @students.each do |student| %>
+<h3>Seat 1</h3>
+<% Student.in_seat(1).each do |student| %>
     <tr>
-      <tr>
+      <td><%= student.nickname %></td>
+      <td><img src=<%= image_url(student) %> /></td>
+    </tr>
+  <% end %>
+<h3>Seat 2</h3>
+<% Student.in_seat(2).each do |student| %>
+    <tr>
+      <td><%= student.nickname %></td>
+      <td><img src=<%= image_url(student) %> /></td>
+    </tr>
+  <% end %>
+<h3>Seat 3</h3>
+<% Student.in_seat(3).each do |student| %>
+    <tr>
+      <td><%= student.nickname %></td>
+      <td><img src=<%= image_url(student) %> /></td>
+    </tr>
+  <% end %>
+<h3>Seat 4</h3>
+<% Student.in_seat(4).each do |student| %>
+    <tr>
+      <td><%= student.nickname %></td>
+      <td><img src=<%= image_url(student) %> /></td>
+    </tr>
+  <% end %>
+ 
+<h3>Absent Students</h3>
+  <% Student.absent.each do |student| %>
+    <tr>
       <td><%= student.name %></td>
       <td><%= student.nickname %></td>
       <td><%= student.email %></td>
       <td><img src=<%= image_url(student) %> /></td>
-      <td><%= link_to 'Edit Student Profile', edit_student_path(student) %></td>
     </tr>
   <% end %>
-</table>
+
