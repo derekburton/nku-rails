@@ -5,7 +5,10 @@ class AttendancesController < ApplicationController
   end
   
   def index
-    @attendances = Attendance.all
+    if(session[:student_id])
+      @attendances = Attendance.find_by(student_identification: session[:student_id]
+    else
+      @attendances = Attendance.all
   end
   
   def create
