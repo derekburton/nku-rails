@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   
   def index
     @students = Student.all
+    @attended_on_date = :selected_date || Date.today
   end
   
   def create

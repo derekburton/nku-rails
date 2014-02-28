@@ -5,10 +5,11 @@ class AttendancesController < ApplicationController
   end
   
   def index
-    if(params[:student_id])
+    if(params[:student_id].present?)
       @attendances = Attendance.find_by(student_identification: params[:student_id])
     else
       @attendances = Attendance.all
+    end
   end
   
   def create
