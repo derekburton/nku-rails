@@ -14,7 +14,7 @@
   <% @attendances.each do |attendance| %>
     <tr>
       <tr>
-      <td><%= Student.find_by_id(attendance.student_identification).name %></td>
+        <td><%= link_to(Student.find_by_id(attendance.student_identification).name, attendances_path(student_id: attendance.student_identification)) %></td>
       <td><%= attendance.attended_on %></td>
       <td><%= attendance.seat %></td>
     </tr>

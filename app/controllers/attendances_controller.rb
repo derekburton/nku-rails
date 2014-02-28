@@ -6,7 +6,7 @@ class AttendancesController < ApplicationController
   
   def index
     if(params[:student_id].present?)
-      @attendances = Attendance.find_by(student_identification: params[:student_id])
+      @attendances = Attendance.where(student_identification: params[:student_id])
     else
       @attendances = Attendance.all
     end

@@ -7,8 +7,8 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Attending', 'Number of attendance'],
-          ['Attending', <%= Student.all.size - Student.absent().size %>],
-          ['Absent', <%= Student.absent.size %>]
+          ['Attending', <%= Student.all.size - Student.absent(@attended_on_date).size %>],
+          ['Absent', <%= Student.absent(@attended_on_date).size %>]
         ]);
 
         var options = {
@@ -25,17 +25,6 @@
 
 <h1>Students</h1>
 
-<% if session[:student_id] %>
-  Hello <%= Student.find(session[:student_id]).name %> 
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>
-  <%= link_to "I'm here!", create_attendance_path %>
-  <%= link_to 'Logout', logout_session_path %>
-<% else %>
-  <%= link_to 'Login', signin_session_path %>
-  <%= link_to 'Sign up', new_student_path %>
-<% end %> 
-<br><br>
 <%= link_to 'View all Attendances', attendances_path %>
 <br><br>
 
@@ -44,12 +33,16 @@
   <%= submit_tag("View Date's Attendances") %>
 <% end %>
     
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+<% if @attended_on_date == nil %>
+    <%= @attended_on_date = Date.today %>
+<% end %>
+    
+<div id="piechart" style="width: 450px; height: 250px;"></div>
 
-<br><br>
+<br>
 <h3>Seat 1</h3>
 
-<% Student.in_seat(1).each do |student| %>
+<% Student.in_seat(1, @attended_on_date).each do |student| %>
     <table>
     <tr>
       <td><%= student.nickname %></td>
@@ -59,7 +52,7 @@
     <br>
   <% end %>
 <h3>Seat 2</h3>
-<% Student.in_seat(2).each do |student| %>
+<% Student.in_seat(2, @attended_on_date).each do |student| %>
     <table>
     <tr>
       <td><%= student.nickname %></td>
@@ -69,7 +62,7 @@
   ` <br>
   <% end %>
 <h3>Seat 3</h3>
-<% Student.in_seat(3).each do |student| %>
+<% Student.in_seat(3, @attended_on_date).each do |student| %>
     <table>
     <tr>
       <td><%= student.nickname %></td>
@@ -79,7 +72,7 @@
     <br>
   <% end %>
 <h3>Seat 4</h3>
-<% Student.in_seat(4).each do |student| %>
+<% Student.in_seat(4, @attended_on_date).each do |student| %>
   <table>
     <tr>
       <td><%= student.nickname %></td>
@@ -97,7 +90,7 @@
     <td>Image</td>
   </tr>
   <br>
-  <% Student.absent().each do |student| %>
+  <% Student.absent(@attended_on_date).each do |student| %>
     <tr>
       <td><%= student.name %></td>
       <td><%= student.nickname %></td>

@@ -5,7 +5,11 @@ class StudentsController < ApplicationController
   
   def index
     @students = Student.all
-    @attended_on_date = :selected_date || Date.today
+    if(params[:selected_date] == nil)
+      @attended_on_date = Date.today
+    else
+      @attended_on_date = params[:selected_date]
+    end
   end
   
   def create
