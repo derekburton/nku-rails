@@ -5,8 +5,8 @@ class AttendancesController < ApplicationController
   end
   
   def index
-    if(session[:student_id])
-      @attendances = Attendance.find_by(student_identification: session[:student_id]
+    if(params[:student_id])
+      @attendances = Attendance.find_by(student_identification: params[:student_id])
     else
       @attendances = Attendance.all
   end
