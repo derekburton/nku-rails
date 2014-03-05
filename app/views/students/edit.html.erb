@@ -1,5 +1,9 @@
 <h1>Edit Student</h1>
 
+<% if(session[:student_id] = nil) %>
+  <%= redirect_to signin_session_path %>
+<% end %>
+
 <!-- 
 This shows the information to the user, but only the logged in user can
 post the information to the server. (see students_controller.rb)

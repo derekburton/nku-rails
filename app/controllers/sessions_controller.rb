@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   end
   
   def create
-    student = Student.find_by(email: session_params[:email])
-    if student && student.authenticate(session_params[:password])
-      session[:student_id] = student.id
+    @student = Student.find_by(email: session_params[:email])
+    if @student && @student.authenticate(session_params[:password])
+      session[:student_id] = @student.id
       redirect_to students_path
       flash[:signedup] = 'Welcome'
     else
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session[:student_id] = nil
       flash[:loggedout] = 'Logged out'
       redirect_to students_path
-    end
+    end    
   end
   
   private

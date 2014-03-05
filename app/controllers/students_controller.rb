@@ -4,6 +4,10 @@ class StudentsController < ApplicationController
   end
   
   def index
+    if(session[:student_id] == nil)
+       redirect_to signin_session_path
+    end
+    
     @students = Student.all
     if(params[:selected_date] == nil)
       @attended_on_date = Date.today
@@ -29,6 +33,9 @@ class StudentsController < ApplicationController
   end
   
   def edit
+    if(session[:student_id] == nil)
+       redirect_to signin_session_path
+    end
     @student = Student.find(params[:id])
   end
   
@@ -37,6 +44,10 @@ When updating, can only update if session's user id is same as the student's id.
 =end
   
   def update
+    if(session[:student_id] == nil)
+       redirect_to signin_session_path
+    end
+    
     @student = Student.find(params[:id])
  
     if session[:student_id] == @student.id

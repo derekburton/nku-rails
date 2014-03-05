@@ -9,14 +9,14 @@
 <body>
   
 <% if session[:student_id] %>
-Hello <%= Student.find(session[:student_id]).name %> 
-&nbsp;&nbsp;&nbsp;&nbsp;
-<%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>
-<%= link_to "I'm here!", create_attendance_path %>
-<%= link_to 'Logout', logout_session_path %>
+  Hello <%= get_current_student().name %> 
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>
+  <%= link_to "I'm here!", create_attendance_path %>
+  <%= link_to 'Logout', logout_session_path %>
 <% else %>
-<%= link_to 'Login', signin_session_path %>
-<%= link_to 'Sign up', new_student_path %>
+  <%= link_to 'Login', signin_session_path %>
+  <%= link_to 'Sign up', new_student_path %>
 <% end %> 
   
 <% flash.each do |key, value| %>

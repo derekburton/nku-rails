@@ -1,5 +1,9 @@
 <%= form_for @attendance do |f| %>
 
+<% if(session[:student_id] = nil) %>
+  <%= redirect_to signin_session_path %>
+<% end %>
+
   <% if @attendance.errors.any? %>
   <h2>Errors are</h2><br>
   <% @attendance.errors.full_messages.each do |msg| %>

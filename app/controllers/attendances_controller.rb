@@ -5,6 +5,10 @@ class AttendancesController < ApplicationController
   end
   
   def index
+    if(session[:student_id] == nil)
+      redirect_to signin_session_path
+    end
+
     if(params[:student_id].present?)
       @attendances = Attendance.where(student_identification: params[:student_id])
     else
@@ -13,6 +17,11 @@ class AttendancesController < ApplicationController
   end
   
   def create
+    
+    if(session[:student_id] == nil)
+      redirect_to signin_session_path
+    end
+
     @attendance = Attendance.new(attendance_params)
     attendances = Attendance.where("attended_on = ?", Date.today)
     bool = true
