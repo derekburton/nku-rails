@@ -8,9 +8,11 @@
 </head>
 <body>
   
-<% if session[:student_id] %>
+  <% if session[:student_id] != nil %>
   Hello <%= get_current_student().name %> 
   &nbsp;&nbsp;&nbsp;&nbsp;
+  <%= link_to 'Seating Chart', students_path %>
+  <%= link_to 'All attendances', attendances_path %>
   <%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>
   <%= link_to "I'm here!", create_attendance_path %>
   <%= link_to 'Logout', logout_session_path %>

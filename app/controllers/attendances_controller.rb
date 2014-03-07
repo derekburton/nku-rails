@@ -16,31 +16,30 @@ class AttendancesController < ApplicationController
     end
   end
   
-  def create
-    
+  def create   
     if(session[:student_id] == nil)
-      redirect_to signin_session_path
-    end
-
-    @attendance = Attendance.new(attendance_params)
-    attendances = Attendance.where("attended_on = ?", Date.today)
-    bool = true
-    attendances.each do |student|
-      if student.student_identification == @attendance.student_identification
-        bool = false
-      end
-    end
-    if bool == true
-      if @attendance.save
-        redirect_to attendances_path
-        flash[:created] = "You have sucessfully logged your attendance"
-      else
-        render 'new'
-      end
+      redirect_to signin_session_path    
     else
-      flash[:done] = "Already have logged attendance for today"
-      redirect_to attendances_path
-    end  
+      @attendance = Attendance.new(attendance_params)
+      attendances = Attendance.where("attended_on = ?", Date.today)
+      bool = true
+      attendances.each do |student|
+        if student.student_identification == @attendance.student_identification
+          bool = false
+        end
+      end
+      if bool == true
+        if @attendance.save
+          redirect_to attendances_path
+          flash[:created] = "You have sucessfully logged your attendance"
+        else
+          render 'new'
+        end
+      else
+        flash[:done] = "Already have logged attendance for today"
+        redirect_to attendances_path
+      end  
+    end
   end
   
   private

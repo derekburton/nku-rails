@@ -1,6 +1,6 @@
 <%= form_for @attendance do |f| %>
 
-<% if(session[:student_id] = nil) %>
+<% if(session[:student_id] == nil) %>
   <%= redirect_to signin_session_path %>
 <% end %>
 

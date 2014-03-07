@@ -1,6 +1,6 @@
 <h1>Edit Student</h1>
 
-<% if(session[:student_id] = nil) %>
+<% if(session[:student_id] == nil) %>
   <%= redirect_to signin_session_path %>
 <% end %>
 
