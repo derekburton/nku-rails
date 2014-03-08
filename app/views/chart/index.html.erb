@@ -40,11 +40,8 @@
 <div id="piechart" style="width: 450px; height: 250px;"></div>
 
 <br>
-<table>
 <h3>Seat 1</h3>
-<tr>
-  <td>
-  
+
 <% Student.in_seat(1, @attended_on_date).each do |student| %>
     <table>
     <tr>
@@ -54,8 +51,6 @@
     </table>
     <br>
   <% end %>
-  </td>
-  <td>
 <h3>Seat 2</h3>
 <% Student.in_seat(2, @attended_on_date).each do |student| %>
     <table>
@@ -66,10 +61,6 @@
     </table>
   ` <br>
   <% end %>
-  </td>
-  </tr>
-  <tr>
-    <td>
 <h3>Seat 3</h3>
 <% Student.in_seat(3, @attended_on_date).each do |student| %>
     <table>
@@ -80,8 +71,6 @@
     </table>
     <br>
   <% end %>
-    </td>
-  <td>
 <h3>Seat 4</h3>
 <% Student.in_seat(4, @attended_on_date).each do |student| %>
   <table>
@@ -90,11 +79,26 @@
       <td><img src=<%= image_url(student) %> /></td>
     </tr>
     </table>
-    </td>
-  </tr></table>
-`   <br>
+` <br>
   <% end %>
- 
-    
+  <table>
+<h3>Absent Students</h3>
+  <tr>
+    <td>Name</td>
+    <td>Nickname</td>
+    <td>Email</td>
+    <td>Image</td>
+  </tr>
+  <br>
+  <% Student.absent(@attended_on_date).each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.nickname %></td>
+      <td><%= student.email %></td>
+      <td><img src=<%= image_url(student) %> /></td>
+    </tr>
+    <br>
+  <% end %>
+</table>
   </body>
 </html>
