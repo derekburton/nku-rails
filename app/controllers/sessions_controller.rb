@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @student = Student.find_by(email: session_params[:email])
     if @student && @student.authenticate(session_params[:password])
       session[:student_id] = @student.id
-      redirect_to students_path
+      redirect_to chart_path
       flash[:signedup] = 'Welcome'
     else
       flash[:error] = 'Email/password incorrect'

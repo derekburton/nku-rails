@@ -9,12 +9,13 @@ NkuRails::Application.routes.draw do
   post 'sessions/new', to: "sessions#create", as: :signin
   get 'sessions/logout', to: "sessions#destroy", as: :logout_session
   get 'attendances/new', to: "attendances#create", as: :create_attendance
+  get 'chart/index', to: "chart#index", as: :chart
 
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root to: "students#index"
+  root to: "chart#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

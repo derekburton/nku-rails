@@ -45,7 +45,7 @@ class AttendancesController < ApplicationController
   private
   def attendance_params
     params[:attendance][:attended_on] = Date.today
-    params[:attendance][:student_identification] = current_student.id
+    params[:attendance][:student_identification] = get_current_student().id
     params.require(:attendance).permit(:attended_on, :seat, :student_identification)
   end
 end
