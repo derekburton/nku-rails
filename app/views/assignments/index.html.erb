@@ -1,2 +1,34 @@
 <h1>Assignments</h1>
 
+<% if(Student.find(session[:student_id).admin = true) %>
+  <!-- use select box to find student -->
+<% end %>
+
+<table>
+  <tr>
+    <% if(Student.find(session[:student_id).admin = true) %>
+      <th>Student Name</th>
+    <% end %>
+    <th>Assignment Name</th>
+    <th>Score</th>
+    <th>Total</th>
+    <th>Percentage</th>
+  </tr>
+ 
+  <% @assignments.each do |assignment| %>
+    <tr>
+      <tr>
+      <% if(Student.find(session[:student_id).admin = true) %>
+        <td>Student.find(assignment.student_id).name</td>
+      <% end %>
+      <td><%= assignment.name %></td>
+      <td><%= assignment.score %></td>
+      <td><%= assignment.total %></td>
+      <td><%= assignment.score.div(assignment.total) %>%</td>
+    </tr>
+  <% end %>
+  
+  <% if(Student.find(session[:student_id).admin = false) %>
+    <p>Student's percentage in the class is <%= @assignments.average_percentage() %> 
+  <% end %>
+</table>
