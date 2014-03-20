@@ -1,4 +1,5 @@
 class Assignment < ActiveRecord::Base
+  
   def self.average_percentage
     assignments = Assignment.all
     amt = 0
@@ -13,4 +14,5 @@ class Assignment < ActiveRecord::Base
   def percentage
     (score.to_f / total) * 100    
   end
+  
 end

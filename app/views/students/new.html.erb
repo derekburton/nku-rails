@@ -38,6 +38,11 @@
   </p>
 
   <p>
+    <%= f.radio_button :admin, true %><%= f.label :admin, "I am an administrator" %><br />
+    <%= f.radio_button :admin, false %><%= f.label :admin, "I am not an administrator" %><br />
+  </p>
+    
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

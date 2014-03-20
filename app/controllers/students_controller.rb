@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
   end
   
   def create
-    @student = Student.new(params[:student].permit(:name, :nickname, :email, :url, :password, :password_confirmation))        
+    @student = Student.new(params[:student].permit(:name, :nickname, :email, :url, :password, :password_confirmation, :admin))        
     
     if @student.save
       redirect_to students_path

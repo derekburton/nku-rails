@@ -3,7 +3,7 @@ NkuRails::Application.routes.draw do
   resources :students 
   resources :sessions, except: :show 
   resources :attendances
-  
+  resources :assignments
   
   get 'sessions/new', to: "sessions#new", as: :signin_session
   post 'sessions/new', to: "sessions#create", as: :signin
