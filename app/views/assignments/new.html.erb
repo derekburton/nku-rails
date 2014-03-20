@@ -1,1 +1,29 @@
 <h1>New Assignment</h1>
+
+<%= form_for @assignment do |f| %>
+  
+  <p> 
+    <%= f.label :student_id %><br>
+    <%= f.select "student_id", options_from_collection_for_select(@students, "id", "name") %>
+  </p>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :score %><br>
+    <%= f.number_field :score %>
+  </p>
+
+  <p>
+    <%= f.label :total %><br>
+    <%= f.number_field :total %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
