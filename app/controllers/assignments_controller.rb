@@ -14,6 +14,10 @@ class AssignmentsController < ApplicationController
         @assignments = Assignment.all
       end
     else
+      if(params[:student_id])
+        redirect_to student_path
+        flash[:error] = "Can't access other people's grades"
+      end
       @assignments = Assignment.where(student_id: session[:student_id])
     end
   end
