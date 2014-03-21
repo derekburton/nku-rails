@@ -1,15 +1,15 @@
 <h1>Assignments</h1>
 
 <% if(Student.find(session[:student_id]).admin == true) %>
-  <%= form_for assignments_path do |f| %>
-    <%= f.select "student_id", options_from_collection_for_select(@students, "id", "name") %>
-    <%= f.submit %>
+  <%= form_tag assignments_path, method: 'get' do %>
+    <%= select_tag(:student_id, options_from_collection_for_select(@students, "id", "name")) %>
+    <%= submit_tag "View user's assignments" %>
   <% end %>
 <% end %>
 
 <table>
   <tr>
-    <% if(Student.find(session[:student_id]).admin = true) %>
+    <% if(Student.find(session[:student_id]).admin == true) %>
       <th>Student Name</th>
     <% end %>
     <th>Assignment Name</th>
@@ -21,13 +21,13 @@
   <% @assignments.each do |assignment| %>
     <tr>
       <tr>
-      <% if(Student.find(session[:student_id]).admin = true) %>
+      <% if(Student.find(session[:student_id]).admin == true) %>
         <td><%= Student.find(assignment.student_id).name %></td>
       <% end %>
       <td><%= assignment.name %></td>
       <td><%= assignment.score %></td>
       <td><%= assignment.total %></td>
-        <td><%= number_with_precision(assignment.score.fdiv(assignment.total) * 100.0, precision: 2) %>%</td>
+      <td><%= number_with_precision(assignment.score.fdiv(assignment.total) * 100.0, precision: 2) %>%</td>
     </tr>
   <% end %>
   

@@ -11,20 +11,21 @@
   <% if session[:student_id] != nil %>
     Hello <%= get_current_student().name %> 
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to 'Seating Chart', chart_path %>
-    <%= link_to 'Student Index', students_path %>
-    <%= link_to 'All Attendances', attendances_path %>
-    <%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>
-    <%= link_to "I'm here!", create_attendance_path %>
-    <%= link_to 'Logout', logout_session_path %>
+    <%= link_to 'Seating Chart', chart_path %>&nbsp;
+    <%= link_to 'Student Index', students_path %>&nbsp;
+    <%= link_to 'All Attendances', attendances_path %>&nbsp;
     <% if get_current_student().admin == true %>
-      <%= link_to 'All Assignments', assignments_path %>
+      <%= link_to 'All Assignments', assignments_path %>&nbsp;
       <%= link_to 'Create a new assignment', new_assignment_path %>
     <% else %>
       <%= link_to 'My Assignments', assignments_path %>
     <% end %>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to 'Edit profile', edit_student_path(Student.find(session[:student_id])) %>&nbsp;
+    <%= link_to "I'm here!", create_attendance_path %>&nbsp;
+    <%= link_to 'Logout', logout_session_path %>
   <% else %>
-    <%= link_to 'Login', signin_session_path %>
+    <%= link_to 'Login', signin_session_path %>&nbsp;
     <%= link_to 'Sign up', new_student_path %>
   <% end %> 
   
