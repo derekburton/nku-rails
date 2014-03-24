@@ -22,6 +22,12 @@ class AssignmentsController < ApplicationController
     end
   end
   
+  def upload
+    AssignmentUploader.new(params[:file]).import
+    redirect_to assignments_path
+    flash[:updated] = "New assignment created"
+  end
+  
   def new
     if(session[:student_id] == nil)
        redirect_to signin_session_path

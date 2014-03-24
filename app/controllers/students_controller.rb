@@ -3,6 +3,15 @@ class StudentsController < ApplicationController
     @student = Student.new
   end
   
+  def new_upload
+  end
+  
+  def upload
+    StudentUploader.new(params[:file]).import
+    redirect_to students_path
+    flash[:updated] = "New student created"
+  end
+  
   def index
     if(session[:student_id] == nil)
        redirect_to signin_session_path

@@ -1,5 +1,10 @@
 <h1>Assignments</h1>
 
+<%= form_tag :import_assignment_post, multipart: true do |f| %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload assignment file" %>
+<% end %>  
+<br><br>
 <% if(Student.find(session[:student_id]).admin == true) %>
   <%= form_tag assignments_path, method: 'get' do %>
     <%= select_tag(:student_id, options_from_collection_for_select(@students, "id", "name")) %>

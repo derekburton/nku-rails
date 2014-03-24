@@ -1,6 +1,11 @@
 NkuRails::Application.routes.draw do
 
-  resources :students 
+  get 'students/upload', to: "students#upload", as: :import_student
+  post 'students/upload', to: "students#upload", as: :import_student_post
+  get 'assignments/upload', to: "assignments#upload", as: :import_assignment
+  post 'assignments/upload', to: "assignments#upload", as: :import_assignment_post
+  
+  resources :students
   resources :sessions, except: :show 
   resources :attendances
   resources :assignments
@@ -10,6 +15,7 @@ NkuRails::Application.routes.draw do
   get 'sessions/logout', to: "sessions#destroy", as: :logout_session
   get 'attendances/new', to: "attendances#create", as: :create_attendance
   get 'chart/index', to: "chart#index", as: :chart
+  
 
 # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
