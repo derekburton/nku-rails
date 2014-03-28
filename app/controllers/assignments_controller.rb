@@ -23,9 +23,9 @@ class AssignmentsController < ApplicationController
   end
   
   def upload
-    AssignmentUploader.new(params[:file]).import
+    @count = AssignmentUploader.new(params[:file]).import
     redirect_to assignments_path
-    flash[:updated] = "New assignment created"
+    flash[:updated] = "#{@count} assignments created"
   end
   
   def new
